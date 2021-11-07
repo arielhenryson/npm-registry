@@ -1,0 +1,26 @@
+<div class="packageNode">
+    <div>{{ data.name }}</div>
+    <div>{{ data.version }}</div>
+
+    <div class="toggle" (click)="open = !open" *ngIf="data.dependencies.length">
+        <div *ngIf="open">
+            <button mat-button>
+                <div class="min">
+                    <mat-icon>minimize</mat-icon>
+                </div>
+            </button>
+        </div>
+        <div *ngIf="!open">
+            <button mat-button>
+                <mat-icon>add</mat-icon>
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="open">
+    <div *ngFor="let child of data.dependencies" class="nested">
+        <app-package [data]="child"></app-package>
+    </div>
+</div>

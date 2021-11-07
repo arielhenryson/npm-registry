@@ -1,0 +1,21 @@
+<div class="box">
+    <h1>Npm view by Ariel Henryson</h1>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Package name</mat-label>
+        <input matInput type="text" [(ngModel)]="package" (ngModelChange)="update()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Version number</mat-label>
+        <input matInput type="text" [(ngModel)]="version" (ngModelChange)="update()">
+    </mat-form-field>
+
+    <app-package [data]="tree" *ngIf="!loading && errorCode === 0"></app-package>
+    <div class="errorBox" *ngIf="!loading && errorCode !== 0">
+        <div>{{ errorMsg }}</div>
+    </div>
+    <div *ngIf="loading" class="loader">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+</div>
